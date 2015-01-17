@@ -1,0 +1,127 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 2015 年 1 朁E17 日 09:39
+-- サーバのバージョン： 5.6.20
+-- PHP Version: 5.5.15
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `fit`
+--
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `fit_admin`
+--
+
+CREATE TABLE IF NOT EXISTS `fit_admin` (
+`admin_id` int(11) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `fit_place`
+--
+
+CREATE TABLE IF NOT EXISTS `fit_place` (
+`place_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `sei` varchar(255) NOT NULL,
+  `mei` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
+  `fax` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `note` mediumtext NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- テーブルのデータのダンプ `fit_place`
+--
+
+INSERT INTO `fit_place` (`place_id`, `name`, `address`, `sei`, `mei`, `tel`, `fax`, `email`, `note`) VALUES
+(1, '日飼店', 'たつの市龍野町日飼182-8', '西村', '洋一郎', '090-1134-4917', '0791-72-8421', 'y.nishimura@tatsuno-system.co.jp', '');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `fit_staff`
+--
+
+CREATE TABLE IF NOT EXISTS `fit_staff` (
+`staff_id` int(11) NOT NULL,
+  `place_id` int(11) NOT NULL,
+  `sei` varchar(255) NOT NULL,
+  `mei` varchar(255) NOT NULL,
+  `tel` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- テーブルのデータのダンプ `fit_staff`
+--
+
+INSERT INTO `fit_staff` (`staff_id`, `place_id`, `sei`, `mei`, `tel`, `email`, `login`, `password`) VALUES
+(1, 1, '西村', '洋一郎', '090-1134-4917', 'y.nishimura@tatsuno-system.co.jp', 'nishimura', 'ba0511e38ecf8f78132197696e3685a4de25955d');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `fit_admin`
+--
+ALTER TABLE `fit_admin`
+ ADD PRIMARY KEY (`admin_id`), ADD UNIQUE KEY `login` (`login`);
+
+--
+-- Indexes for table `fit_place`
+--
+ALTER TABLE `fit_place`
+ ADD PRIMARY KEY (`place_id`);
+
+--
+-- Indexes for table `fit_staff`
+--
+ALTER TABLE `fit_staff`
+ ADD PRIMARY KEY (`staff_id`), ADD UNIQUE KEY `login` (`login`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `fit_admin`
+--
+ALTER TABLE `fit_admin`
+MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fit_place`
+--
+ALTER TABLE `fit_place`
+MODIFY `place_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `fit_staff`
+--
+ALTER TABLE `fit_staff`
+MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
